@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://0k0xvgnss8mo"]
+
+[ext_resource type="Texture2D" uid="uid://dgspg7esdgoc0" path="res://assets/forest assets/Animated sprites/Animated water waves/spr_front_wave_animated.png" id="1_cxdvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxdvq"]
+size = Vector2(19, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmjsd"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x46cw"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddqdh"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuo8x"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcqmc"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qggb"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngyfj"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a45oi"]
+atlas = ExtResource("1_cxdvq")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwi7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmjsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x46cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddqdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuo8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcqmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qggb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngyfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a45oi")
+}],
+"loop": true,
+"name": &"tubig",
+"speed": 8.0
+}]
+
+[node name="tubig" type="StaticBody2D"]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 14.5)
+shape = SubResource("RectangleShape2D_cxdvq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 11)
+sprite_frames = SubResource("SpriteFrames_fwi7f")
+animation = &"tubig"
+autoplay = "tubig"
+frame_progress = 0.28869

@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2bvqqiibgmlg"]
+
+[ext_resource type="Texture2D" uid="uid://cqxjqn1c4crfc" path="res://assets/forest assets/Animated sprites/Animated Campfire/spr_campfire_burning.png" id="1_4psdg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk3wp"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(0, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmhiw"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(32, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aldm"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(64, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jev0p"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(96, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0yqv"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(128, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t6eb"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(160, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2npm3"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(192, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kp8y"]
+atlas = ExtResource("1_4psdg")
+region = Rect2(224, 14, 32, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12p4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk3wp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmhiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aldm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jev0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0yqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t6eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2npm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kp8y")
+}],
+"loop": true,
+"name": &"bonfire",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7pbu5"]
+radius = 11.0
+
+[node name="Bonfire" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_12p4q")
+animation = &"bonfire"
+autoplay = "bonfire"
+frame_progress = 0.69521
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_7pbu5")
