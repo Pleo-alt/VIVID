@@ -43,6 +43,7 @@ func _handle_final_fade() -> void:
 	animator.play("fade_in")
 	await animator.animation_finished
 	$main_character.is_cutscene = false
+	get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 func play_intro_dialogue() -> void:
 	dialogue_ended = false

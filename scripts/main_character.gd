@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 30.0
-const BOOST_AMOUNT = 40.0  
+const SPEED = 40.0
+const BOOST_AMOUNT = 20.0  
 var current_dir = "none"
 var is_sprinting = false
 var is_cutscene = false
@@ -116,3 +116,11 @@ func look_left():
 
 func look_down():
 	sprite.play("front_idle")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+	
+func play_death():
+	sprite.play("death")
+	set_physics_process(false)
