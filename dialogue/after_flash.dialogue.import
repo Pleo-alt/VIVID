@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://br6ioxjx6oi04"
+path="res://.godot/imported/after_flash.dialogue-2e3c3858915c6e20da52ec49b631c858.tres"
+
+[deps]
+
+source_file="res://dialogue/after_flash.dialogue"
+dest_files=["res://.godot/imported/after_flash.dialogue-2e3c3858915c6e20da52ec49b631c858.tres"]
+
+[params]
+
+defaults=true

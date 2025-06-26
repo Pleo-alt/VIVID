@@ -4,13 +4,20 @@ const SPEED = 30.0
 const BOOST_AMOUNT = 40.0  
 var current_dir = "none"
 var is_sprinting = false
+var is_cutscene = false
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	sprite.play("front_idle")
 
 func _physics_process(delta):
+	if is_cutscene:
+		velocity = Vector2.ZERO
+		move_and_collide(velocity)
+		return
+
 	player_movement(delta)
+
 
 func player_movement(delta):
 	var adjusted_speed = SPEED
@@ -96,3 +103,16 @@ func player_anim(movement):
 			sprite.play("back_walk")
 		elif movement == 0:
 			sprite.play("back_idle")
+func look_up():
+	sprite.play("back_idle")
+
+func look_right():
+	sprite.flip_h = false
+	sprite.play("side_idle")
+
+func look_left():
+	sprite.flip_h = true
+	sprite.play("side_idle")
+
+func look_down():
+	sprite.play("front_idle")

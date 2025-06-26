@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwx1uudlrduh3"]
+
+[ext_resource type="Script" uid="uid://wcfxybmelmt4" path="res://scripts/outside_scene.gd" id="1_omw1v"]
+[ext_resource type="PackedScene" uid="uid://1m7xf4i262tx" path="res://scenes/main_character.tscn" id="1_tigwu"]
+
+[sub_resource type="Animation" id="Animation_0uy8c"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3lx31"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nh7yu"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4l55"]
+_data = {
+&"RESET": SubResource("Animation_3lx31"),
+&"fade_in": SubResource("Animation_0uy8c"),
+&"fade_out": SubResource("Animation_nh7yu")
+}
+
+[sub_resource type="Animation" id="Animation_omw1v"]
+resource_name = "screen_flash"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5, 0.8, 1.1, 1.46667, 1.8, 2.13333, 2.46667, 2.73333, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2yh6w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_da3f0"]
+_data = {
+&"RESET": SubResource("Animation_2yh6w"),
+&"screen_flash": SubResource("Animation_omw1v")
+}
+
+[node name="OutsideScene" type="Node2D"]
+script = ExtResource("1_omw1v")
+
+[node name="main_character" parent="." instance=ExtResource("1_tigwu")]
+position = Vector2(550, 269)
+
+[node name="Camera2D" type="Camera2D" parent="main_character"]
+position = Vector2(1, 4)
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 0.161
+anchor_right = 0.099
+anchor_bottom = 0.161
+offset_left = -117.048
+offset_top = -1586.33
+offset_right = 1754.95
+offset_bottom = 593.672
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_w4l55")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(553, 273)
+zoom = Vector2(4, 4)
+
+[node name="FlashRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_top = -1601.0
+offset_right = 3400.0
+offset_bottom = 1112.0
+
+[node name="FlashAnimator" type="AnimationPlayer" parent="FlashRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_da3f0")
+}

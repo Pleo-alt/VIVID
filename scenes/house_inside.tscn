@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5o6qcy35wxxe"]
+[gd_scene load_steps=18 format=3 uid="uid://c5o6qcy35wxxe"]
 
 [ext_resource type="Texture2D" uid="uid://dpbkml7lgfw5n" path="res://assets/old-house-tile-set/old house tile.png" id="1_lp3mh"]
 [ext_resource type="Texture2D" uid="uid://bwhyywtoy0phr" path="res://assets/old-house-tile-set/old house objects.png" id="2_oila2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d5j475alkfxd" path="res://assets/Animated_16x16/Spritesheet_16x16/Tileset_SpookyMansion_16x16_FREE.png" id="4_3lx31"]
 [ext_resource type="Texture2D" uid="uid://e8r2x4uxqa3u" path="res://assets/old-house-tile-set/Tileset_Large.png" id="5_0uy8c"]
 [ext_resource type="PackedScene" uid="uid://1m7xf4i262tx" path="res://scenes/main_character.tscn" id="6_oila2"]
+[ext_resource type="PackedScene" uid="uid://dx8b7nlw6elvs" path="res://scenes/door.tscn" id="7_0uy8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w4l55"]
 texture = ExtResource("1_lp3mh")
@@ -1035,16 +1036,60 @@ sources/2 = SubResource("TileSetAtlasSource_6685h")
 sources/3 = SubResource("TileSetAtlasSource_dvdd3")
 sources/4 = SubResource("TileSetAtlasSource_3lx31")
 
+[sub_resource type="Animation" id="Animation_0uy8c"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3lx31"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nh7yu"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4l55"]
+_data = {
+&"RESET": SubResource("Animation_3lx31"),
+&"fade_in": SubResource("Animation_0uy8c"),
+&"fade_out": SubResource("Animation_nh7yu")
+}
+
 [node name="scene_one" type="Node2D"]
 y_sort_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -2
-offset_left = -44.0
-offset_top = -10.0
-offset_right = 299.0
-offset_bottom = 216.0
-color = Color(0, 0, 0, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_d6jso")
@@ -1059,7 +1104,7 @@ layer_2/z_index = -1
 layer_2/tile_data = PackedInt32Array(393223, 393220, 1342177287, 393224, 393220, 1342177287, 393225, 393220, 1342177287, 393226, 393220, 1342177287, 524293, 393220, 7, 393222, 393220, 1342177287, 589829, 393220, 7, 393221, 327684, 805306376, 655365, 393220, 7, 196609, 393220, 1610612743, 196610, 393220, 1610612743, 196611, 393220, 1610612743, 196612, 393220, 1610612743, 196613, 327684, 8, 65541, 393220, 805306375, 655371, 393220, 7, 589835, 393220, 7, 524299, 393220, 7, 458763, 393220, 7, 393227, 393220, 7, 327691, 393220, 7, 262155, 327684, 805306376, 65547, 393220, 7, 11, 393220, 1610612743, 0, 4, 8, 655360, 393220, 805306375, 720897, 393220, 1342177287, 10, 393220, 1610612743, 9, 393220, 1610612743, 8, 393220, 1610612743, 7, 393220, 1610612743, 6, 393220, 1610612743, 5, 393220, 1610612743, 4, 393220, 1610612743, 3, 393220, 1610612743, 2, 393220, 1610612743, 1, 393220, 1610612743, 65536, 393220, 805306375, 131072, 393220, 805306375, 196608, 393220, 805306375, 262144, 393220, 805306375, 327680, 393220, 805306375, 393216, 393220, 805306375, 458752, 393220, 805306375, 524288, 393220, 805306375, 589824, 393220, 805306375, 720896, 4, 1610612744, 720898, 327684, 1610612744, 786434, 393220, 805306375, 786436, 393220, 7, 720900, 327684, 805306376, 720901, 393220, 1342177287, 720902, 393220, 1342177287, 720903, 393220, 1342177287, 720904, 393220, 1342177287, 720905, 393220, 1342177287, 720906, 393220, 1342177287, 720907, 4, 805306376, 12, 393220, 1610612743, 13, 393220, 1610612743, 15, 4, 1342177288, 65551, 393220, 7, 131087, 393220, 7, 196623, 393220, 7, 262158, 393220, 1342177287, 262156, 393220, 1342177287, 262157, 393220, 1342177287, 262159, 4, 805306376, 196619, 393220, 7, 14, 393220, 1610612743, 65549, 393220, 805306375, 131085, 393220, 805306375)
 
 [node name="main_character" parent="." instance=ExtResource("6_oila2")]
-position = Vector2(108, 62)
+position = Vector2(125, 40)
 
 [node name="Camera2D" type="Camera2D" parent="main_character"]
 position = Vector2(2, 12)
@@ -1070,3 +1115,26 @@ limit_right = 267
 limit_bottom = 208
 position_smoothing_enabled = true
 editor_draw_limits = true
+
+[node name="Door" parent="." instance=ExtResource("7_0uy8c")]
+position = Vector2(56, 194)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 0.161
+anchor_right = 0.099
+anchor_bottom = 0.161
+offset_left = -117.048
+offset_top = -1586.33
+offset_right = 1754.95
+offset_bottom = 593.672
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_w4l55")
+}

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://du2vbhmwt5eik"
+path="res://.godot/imported/headache.dialogue-ad49abb1431f0076f84f36f3afe8cb6d.tres"
+
+[deps]
+
+source_file="res://headache.dialogue"
+dest_files=["res://.godot/imported/headache.dialogue-ad49abb1431f0076f84f36f3afe8cb6d.tres"]
+
+[params]
+
+defaults=true
