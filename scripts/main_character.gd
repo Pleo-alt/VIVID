@@ -124,3 +124,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func play_death():
 	sprite.play("death")
 	set_physics_process(false)
+	await sprite.animation_finished  # Waits until "death" animation finishes
+	get_tree().change_scene_to_file("res://scenes/world.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://do2f6pf87bw1t"]
+[gd_scene load_steps=35 format=3 uid="uid://do2f6pf87bw1t"]
 
 [ext_resource type="Script" uid="uid://bim0wjol3frul" path="res://scripts/world.gd" id="1_jhx03"]
 [ext_resource type="Script" uid="uid://bup0y2e4ths71" path="res://scripts/point_light_2d.gd" id="1_q5onr"]
@@ -2022,16 +2022,6 @@ fill = 1
 fill_from = Vector2(0.487654, 0.515432)
 fill_to = Vector2(1, 0.873457)
 
-[sub_resource type="Gradient" id="Gradient_lakw3"]
-offsets = PackedFloat32Array(0.473684, 0.77193)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pm21f"]
-gradient = SubResource("Gradient_lakw3")
-fill = 1
-fill_from = Vector2(0.518519, 0.478395)
-fill_to = Vector2(0.975309, 0.00925926)
-
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_jhx03")
@@ -2186,8 +2176,5 @@ position = Vector2(564, 191)
 scale = Vector2(0.599995, 0.519995)
 
 [node name="Key" parent="." instance=ExtResource("16_dss4m")]
-position = Vector2(125, -103)
+position = Vector2(133, -85)
 scale = Vector2(0.398111, 0.322517)
-
-[node name="PointLight2D" type="PointLight2D" parent="Key"]
-texture = SubResource("GradientTexture2D_pm21f")
