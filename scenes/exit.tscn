@@ -1,21 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdel3wxnpsmj8"]
+[gd_scene load_steps=11 format=3 uid="uid://bdel3wxnpsmj8"]
 
 [ext_resource type="Script" uid="uid://dcnvkudbijp81" path="res://scripts/area_2d.gd" id="1_l0aq0"]
+[ext_resource type="Texture2D" uid="uid://26fh3do3f26c" path="res://assets/pixel-art-key/Pixel Gate part 2.png" id="1_uyw7u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5n14"]
+atlas = ExtResource("1_uyw7u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7mer"]
+atlas = ExtResource("1_uyw7u")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka15t"]
+atlas = ExtResource("1_uyw7u")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2427a"]
+atlas = ExtResource("1_uyw7u")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywa8d"]
+atlas = ExtResource("1_uyw7u")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtnw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5n14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7mer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka15t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2427a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywa8d")
+}],
+"loop": true,
+"name": &"exit_anim",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38eme"]
-size = Vector2(5, 5)
+size = Vector2(63.75, 85.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0aq0"]
+size = Vector2(71.5, 93)
 
 [node name="Exit" type="StaticBody2D"]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rtnw0")
+animation = &"exit_anim"
+frame_progress = 0.0384899
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.125, 5)
 shape = SubResource("RectangleShape2D_38eme")
 
 [node name="ExitDetector" type="Area2D" parent="."]
 script = ExtResource("1_l0aq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDetector"]
+position = Vector2(-4.25, 3)
 shape = SubResource("RectangleShape2D_l0aq0")
 
 [connection signal="body_entered" from="ExitDetector" to="ExitDetector" method="_on_body_entered"]

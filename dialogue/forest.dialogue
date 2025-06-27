@@ -1,10 +1,10 @@
 ~ start
-Nathan: ...Where.. am I?	
-Nathan: Why is it so dark in here?
-Nathan: This place... something about it feels familiar.
-Nathan: Wait [shake][wait=1] this is where we camped. Me and Dad.
-Nathan: [shake]...
-Nathan: [shake] Why would I be back here?
-Nathan: I.. do not want to remember this place
-Nathan: I need to get out. Now.
+Eli: ...Where.. am I?	
+Eli: Why is it so dark in here?
+Eli: This place... something about it feels familiar.
+Eli: Wait [shake][wait=1][color=red] this is where we camped. Me and Dad.
+Eli: [color=red][shake]...
+Eli: [color=red][shake] Why would I be back here?
+Eli: I.. do not want to remember this place
+Eli: I need to get out. Now.
 => END

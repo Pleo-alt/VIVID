@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameState="*res://scripts/GameState.gd"
 
 [display]
 
@@ -67,7 +68,7 @@ dialogue={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/main.dialogue", "res://headache.dialogue", "res://dialogue/after_flash.dialogue", "res://dialogue/instruction.dialogue", "res://dialogue/forest.dialogue", "res://dialogue/enemy_encounter.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/main.dialogue", "res://headache.dialogue", "res://dialogue/after_flash.dialogue", "res://dialogue/instruction.dialogue", "res://dialogue/forest.dialogue", "res://dialogue/enemy_encounter.dialogue", "res://dialogue/normal_ending.dialogue", "res://dialogue/special_ending.dialogue")
 
 [rendering]
 

@@ -6,7 +6,7 @@
 size = Vector2(17, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkfqi"]
-size = Vector2(17, 11)
+size = Vector2(17, 17)
 
 [node name="instructions" type="StaticBody2D"]
 
@@ -18,5 +18,8 @@ shape = SubResource("RectangleShape2D_bso8b")
 script = ExtResource("1_dkfqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerdetector"]
-position = Vector2(-1.5, -4.5)
+position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_dkfqi")
+
+[connection signal="body_entered" from="playerdetector" to="playerdetector" method="_on_body_entered"]
+[connection signal="body_exited" from="playerdetector" to="playerdetector" method="_on_body_exited"]

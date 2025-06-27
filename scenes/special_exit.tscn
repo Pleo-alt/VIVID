@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://c2r4u00465yry"]
+
+[ext_resource type="Texture2D" uid="uid://b1p0aao1hlwuf" path="res://assets/pixel-art-key/sprite-sheet.png" id="1_25tll"]
+[ext_resource type="Script" uid="uid://c41xnc3tyjlhk" path="res://scripts/special_exit.gd" id="2_xsuut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsuut"]
+radius = 19.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dic10"]
+atlas = ExtResource("1_25tll")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meq1e"]
+atlas = ExtResource("1_25tll")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liqjk"]
+atlas = ExtResource("1_25tll")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcity"]
+atlas = ExtResource("1_25tll")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvyiw"]
+atlas = ExtResource("1_25tll")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8yvf"]
+atlas = ExtResource("1_25tll")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7ugv"]
+atlas = ExtResource("1_25tll")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppyv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dic10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meq1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liqjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcity")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvyiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8yvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7ugv")
+}],
+"loop": true,
+"name": &"special_door",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6q52"]
+radius = 22.0907
+
+[node name="SpecialExit" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsuut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ppyv7")
+animation = &"special_door"
+frame_progress = 0.885559
+
+[node name="Special_exit" type="Area2D" parent="AnimatedSprite2D"]
+script = ExtResource("2_xsuut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Special_exit"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_f6q52")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Special_exit" to="AnimatedSprite2D/Special_exit" method="_on_body_entered"]

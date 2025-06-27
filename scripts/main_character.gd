@@ -1,18 +1,20 @@
 extends CharacterBody2D
 
 const SPEED = 40.0
-const BOOST_AMOUNT = 20.0  
+const BOOST_AMOUNT = 20.0
+
 var current_dir = "none"
 var is_sprinting = false
 var is_cutscene = false
-@onready var sprite = $AnimatedSprite2D
 
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	sprite.play("front_idle")
 
 func _physics_process(delta):
-	if is_cutscene:
+	if is_cutscene or not GameState.player_can_interact:
+		print("GameState status from main_character:", GameState.player_can_interact)
 		velocity = Vector2.ZERO
 		move_and_collide(velocity)
 		return
@@ -20,7 +22,11 @@ func _physics_process(delta):
 	player_movement(delta)
 
 func player_movement(delta):
-	# Block movement if hidden
+	if not GameState.player_can_interact:
+		velocity = Vector2.ZERO
+		move_and_collide(velocity)
+		return
+
 	if get_meta("is_hidden", false):
 		velocity = Vector2.ZERO
 		move_and_collide(velocity)
@@ -31,7 +37,7 @@ func player_movement(delta):
 	if get_tree().current_scene.name == "scene_one":
 		is_sprinting = false
 	else:
-		if Input.is_action_pressed("boost"):  
+		if Input.is_action_pressed("boost"):
 			is_sprinting = true
 			adjusted_speed += BOOST_AMOUNT
 		else:
