@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wcfxybmelmt4" path="res://scripts/outside_scene.gd" id="1_omw1v"]
 [ext_resource type="PackedScene" uid="uid://1m7xf4i262tx" path="res://scenes/main_character.tscn" id="1_tigwu"]
 
-[sub_resource type="Animation" id="Animation_3lx31"]
+[sub_resource type="Animation" id="Animation_o8fc1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_0uy8c"]
+[sub_resource type="Animation" id="Animation_xo05s"]
 resource_name = "fade_in"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_nh7yu"]
+[sub_resource type="Animation" id="Animation_dss4m"]
 resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -48,11 +48,11 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4l55"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7t5mc"]
 _data = {
-&"RESET": SubResource("Animation_3lx31"),
-&"fade_in": SubResource("Animation_0uy8c"),
-&"fade_out": SubResource("Animation_nh7yu")
+&"RESET": SubResource("Animation_o8fc1"),
+&"fade_in": SubResource("Animation_xo05s"),
+&"fade_out": SubResource("Animation_dss4m")
 }
 
 [sub_resource type="Animation" id="Animation_2yh6w"]
@@ -118,7 +118,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
 libraries = {
-&"": SubResource("AnimationLibrary_w4l55")
+&"": SubResource("AnimationLibrary_7t5mc")
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]

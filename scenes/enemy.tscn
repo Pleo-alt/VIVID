@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3 uid="uid://0km1xpjtswxl"]
+[gd_scene load_steps=160 format=3 uid="uid://0km1xpjtswxl"]
 
 [ext_resource type="Script" uid="uid://cdlmigy70xxa6" path="res://scripts/enemy.gd" id="1_ipns3"]
 [ext_resource type="Texture2D" uid="uid://b7imerspdjh81" path="res://assets/E_Bros_Assets_TopDownEnemy/Enemy-Melee-Attack-N.png" id="1_md484"]
@@ -663,7 +663,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_back",
-"speed": 20.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -740,7 +740,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_front",
-"speed": 20.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -817,7 +817,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_left",
-"speed": 20.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -894,7 +894,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_right",
-"speed": 20.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1062,39 +1062,82 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_556p0"]
-radius = 25.0799
+radius = 11.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nufwo"]
 radius = 172.003
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ipns3"]
-radius = 70.0286
+radius = 72.0278
+
+[sub_resource type="Animation" id="Animation_ipns3"]
+resource_name = "wonder"
+length = 3.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3.16667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"wonder_left"
+}, {
+"args": [],
+"method": &"wonder_right"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qclf"]
+_data = {
+&"wonder": SubResource("Animation_ipns3")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ipns3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pe5n7")
-animation = &"front_idle"
+animation = &"attack_front"
 autoplay = "front_idle"
+frame_progress = 0.598085
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 10)
+position = Vector2(-1, 8)
 shape = SubResource("CircleShape2D_556p0")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+position = Vector2(2, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(11, 5)
+position = Vector2(-4, -3)
 shape = SubResource("CircleShape2D_nufwo")
 
 [node name="PlayerAttack" type="Area2D" parent="."]
+position = Vector2(32, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttack"]
-position = Vector2(-5, 4)
+position = Vector2(-38, 15)
 shape = SubResource("CircleShape2D_ipns3")
+
+[node name="WonderMode" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8qclf")
+}
+
+[node name="WonderTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="WonderDelayTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="PlayerAttack" to="." method="_on_player_attack_body_entered"]
 [connection signal="body_exited" from="PlayerAttack" to="." method="_on_player_attack_body_exited"]
+[connection signal="animation_finished" from="WonderMode" to="." method="_on_wonder_mode_animation_finished"]

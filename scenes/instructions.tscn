@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7wi0jpl7gsvs"]
+
+[ext_resource type="Script" uid="uid://belqm13qdikn" path="res://scripts/instruction.gd" id="1_dkfqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bso8b"]
+size = Vector2(17, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkfqi"]
+size = Vector2(17, 11)
+
+[node name="instructions" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -7.5)
+shape = SubResource("RectangleShape2D_bso8b")
+
+[node name="playerdetector" type="Area2D" parent="."]
+script = ExtResource("1_dkfqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerdetector"]
+position = Vector2(-1.5, -4.5)
+shape = SubResource("RectangleShape2D_dkfqi")

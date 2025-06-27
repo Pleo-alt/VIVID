@@ -30,6 +30,9 @@ func _ready() -> void:
 
 	flash_animator.play("screen_flash")
 	await flash_animator.animation_finished
+	
+	$main_character/AnimatedSprite2D.visible = true
+	$main_character/AnimatedSprite2D.play("death")
 
 	play_after_flash_dialogue()
 	await _wait_for_dialogue_end()
@@ -38,6 +41,7 @@ func _ready() -> void:
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	dialogue_ended = true
+
 
 func _handle_final_fade() -> void:
 	animator.play("fade_in")
